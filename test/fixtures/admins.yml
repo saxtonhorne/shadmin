@@ -1,0 +1,7 @@
+adam:
+  email: adam@example.com
+  encrypted_password: 9n9834fasdf
+
+bob:
+  email: bob@example.com
+  encrypted_password: 98oq49fhsdfrg3
