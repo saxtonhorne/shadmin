@@ -10,7 +10,17 @@ class AdminTest < ActiveSupport::TestCase
   end
 
   def test_validates_email
-  	admin.email = ''
+  	admin.email = 'peter'
+  	assert_not admin.valid?
+  end
+
+  def test_validates_password_length_min
+  	admin.password = 'a' * 7
+  	assert_not admin.valid?
+  end
+
+  def test_validates_password_length_max
+  	admin.password = 'a' * 129
   	assert_not admin.valid?
   end
 end
