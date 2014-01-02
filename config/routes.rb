@@ -3,5 +3,9 @@ Shadmin::Application.routes.draw do
   devise_scope :admin do
     get 'admin/logout', to: 'devise/sessions#destroy', via: :delete
   end
-  # root 'welcome#index'
+
+  # root to: 'admin#index'
+
+  namespace :admin do
+  end
 end
