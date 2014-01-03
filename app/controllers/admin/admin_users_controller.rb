@@ -15,6 +15,9 @@ class Admin::AdminUsersController < AdminController
 		if @admin_user.update admin_params
 			flash[:success] = 'Successfully updated admin user.'
 			redirect_to admin_admin_user_path(@admin_user)
+		else
+			flash.now[:error] = 'Error updating admin user.'
+			render :edit
 		end
 	end
 
