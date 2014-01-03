@@ -79,6 +79,14 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_equal 'adam2@example.com', @admin.reload.email, "Email should have been updated"
   end	
 
+  # def test_update_failure
+  # 	sign_in @admin
+  # 	patch :update, id: @admin.id, admin: { email: 'bob@example.com', password: 'password123', password_confirmation: 'password123' }
+  # 	assert_redirected_to admin_admin_user_path(@admin)
+  # 	assert_equal 'Successfully updated admin user.', flash[:success]
+  # 	assert_equal 'adam2@example.com', @admin.reload.email, "Email should have been updated"
+  # end	
+
   def test_redirect_non_logged_in_user_for_update
   	sign_out :admin
   	patch :update, id: @admin.id, admin: { email: 'adam3@example.com', password: 'password123', password_confirmation: 'password123' }
