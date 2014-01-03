@@ -1,5 +1,5 @@
 class Admin::AdminUsersController < AdminController
-	before_filter :find_admin_user, only: [:show, :edit, :update]
+	before_filter :find_admin_user, only: [:show, :edit, :update, :destroy]
 
 	def index
 		@admin_users = Admin.all
@@ -16,6 +16,12 @@ class Admin::AdminUsersController < AdminController
 			flash[:success] = 'Successfully updated admin user.'
 			redirect_to admin_admin_user_path(@admin_user)
 		end
+	end
+
+	def destroy
+		@admin_user.destroy!
+		flash[:success] = 'Successfully deleted admin user.'
+		redirect_to admin_admin_users_path
 	end
 
 	private

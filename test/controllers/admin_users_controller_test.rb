@@ -86,4 +86,29 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
   end
 
+  # DELETE /admin/admin_user/1
+  def test_delete_routing
+  	assert_routing({ path: '/admin/admin_users/1', method: 'delete' }, { controller: 'admin/admin_users', action: 'destroy', id: '1' })
+  end
+
+  def test_delete
+  	sign_in @admin
+  	admin_id = @admin.id
+  	assert_difference 'Admin.count', -1 do
+  		delete :destroy, id: admin_id	
+  	end
+  	assert_redirected_to admin_admin_users_path
+  	assert_equal 'Successfully deleted admin user.', flash[:success]
+  	refute Admin.where(id: admin_id).any?
+  end	
+
+  def test_redirect_non_logged_in_user_for_delete
+  	sign_out :admin
+  	assert_no_difference 'Admin.count' do
+	  	delete :destroy, id: @admin.id
+	  end
+  	assert_redirected_to new_admin_session_path
+  	assert Admin.where(id: @admin.id).any?
+  end
+
 end
