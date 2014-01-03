@@ -30,7 +30,12 @@ class Admin::AdminUsersController < AdminController
 	private
 
 		def find_admin_user
-			@admin_user = Admin.find params[:id]
+			begin
+				@admin_user = Admin.find params[:id]
+			rescue ActiveRecord::RecordNotFound
+				flash[:error] = "Could not find admin user with id=#{params[:id]}"
+				redirect_to :back
+			end
 		end
 
 		def admin_params

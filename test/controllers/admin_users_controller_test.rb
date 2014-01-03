@@ -5,6 +5,14 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	@admin = admins :adam
   end
 
+  def test_find_admin_user_failure
+  	sign_in @admin
+  	request.env["HTTP_REFERER"] = admin_admin_users_path
+  	get :show, id: 13	
+  	assert_redirected_to admin_admin_users_path
+  	assert_equal 'Could not find admin user with id=13', flash[:error]
+  end
+
   # GET /admin/admin_user
   def test_index_routing
   	assert_routing '/admin/admin_users', { controller: 'admin/admin_users', action: 'index' }
