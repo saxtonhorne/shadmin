@@ -8,6 +8,10 @@ class Admin::AdminUsersController < AdminController
 	def show
 	end
 
+	def new
+		@admin_user = Admin.new
+	end
+
 	def edit
 	end
 
