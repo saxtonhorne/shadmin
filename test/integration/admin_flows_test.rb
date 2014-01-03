@@ -10,6 +10,8 @@ class AdminFlowsTest < ActionDispatch::IntegrationTest
   # 	assert_response :success
   # end
 
+  # def test_logged_out_user_shoule_be_redirected_
+  
   private
 
   	def login(user)
