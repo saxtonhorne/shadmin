@@ -66,4 +66,24 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_redirected_to new_admin_session_path
   end
 
+  # PATCH /admin/admin_user/1
+  def test_update_routing
+  	assert_routing({ path: '/admin/admin_users/1', method: 'patch' }, { controller: 'admin/admin_users', action: 'update', id: '1' })
+  end
+
+  def test_update
+  	sign_in @admin
+  	patch :update, id: @admin.id, admin: { email: 'adam2@example.com', password: 'password123', password_confirmation: 'password123' }
+  	assert_redirected_to admin_admin_user_path(@admin)
+  	assert_equal 'Successfully updated admin user.', flash[:success]
+  	assert_equal 'adam2@example.com', @admin.reload.email, "Email should have been updated"
+  end	
+
+  def test_redirect_non_logged_in_user_for_update
+  	sign_out :admin
+  	patch :update, id: @admin.id, admin: { email: 'adam3@example.com', password: 'password123', password_confirmation: 'password123' }
+  	assert_redirected_to new_admin_session_path
+  	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
+  end
+
 end
