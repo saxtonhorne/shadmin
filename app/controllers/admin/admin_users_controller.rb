@@ -1,10 +1,10 @@
 class Admin::AdminUsersController < AdminController
 
+	before_filter :find_all_admin_users, only: :index
 	before_filter :find_admin_user, only: [:show, :edit, :update, :destroy]
 	before_filter :build_admin_user, only: [:new, :create]
 
 	def index
-		@admin_users = Admin.all
 	end
 
 	def show
@@ -59,6 +59,10 @@ class Admin::AdminUsersController < AdminController
 				flash[:error] = "Could not find admin user with id=#{params[:id]}"
 				redirect_to :back
 			end
+		end
+
+		def find_all_admin_users
+			@admin_users = Admin.all
 		end
 
 		def admin_params
