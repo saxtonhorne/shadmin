@@ -1,5 +1,7 @@
 class Admin::AdminUsersController < AdminController
+
 	before_filter :find_admin_user, only: [:show, :edit, :update, :destroy]
+	before_filter :build_admin_user, only: [:new, :create]
 
 	def index
 		@admin_users = Admin.all
@@ -9,11 +11,9 @@ class Admin::AdminUsersController < AdminController
 	end
 
 	def new
-		@admin_user = Admin.new
 	end
 
 	def create
-		@admin_user = Admin.new admin_params
 		if @admin_user.save
 			flash[:success] = 'Successfully created new admin user.'
 			redirect_to admin_admin_user_path(@admin_user)
@@ -43,6 +43,14 @@ class Admin::AdminUsersController < AdminController
 	end
 
 	private
+
+		def build_admin_user
+			begin
+				@admin_user = Admin.new admin_params
+			rescue ActionController::ParameterMissing
+				@admin_user = Admin.new
+			end
+		end
 
 		def find_admin_user
 			begin
