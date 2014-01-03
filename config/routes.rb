@@ -7,5 +7,6 @@ Shadmin::Application.routes.draw do
   # root to: 'admin#index'
 
   namespace :admin do
+    resources :admin_users
   end
 end
