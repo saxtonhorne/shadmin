@@ -13,7 +13,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_equal 'Could not find admin user with id=13', flash[:error]
   end
 
-  # GET :index /admin/admin_user
+  # GET :index /admin/admin_users
   def test_index_routing
   	assert_routing '/admin/admin_users', { controller: 'admin/admin_users', action: 'index' }
   end
@@ -33,7 +33,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_redirected_to new_admin_session_path
   end
 
-  # GET :show /admin/admin_user/1 
+  # GET :show /admin/admin_users/1 
   def test_show_routing
   	assert_routing '/admin/admin_users/1', { controller: 'admin/admin_users', action: 'show', id: '1' }
   end
@@ -54,7 +54,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   end
 
 
-  # GET :new /admin/admin_user/new
+  # GET :new /admin/admin_users/new
   def test_new_routing
   	assert_routing '/admin/admin_users/new', { controller: 'admin/admin_users', action: 'new' }
   end
@@ -77,7 +77,41 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   end
 
 
-  # GET :edit /admin/admin_user/1/edit
+  # POST :create /admin/admin_users
+  def test_create_routing
+  	assert_routing({ path: '/admin/admin_users', method: 'post' }, { controller: 'admin/admin_users', action: 'create' })
+  end
+
+  def test_create
+  	sign_in @admin
+  	assert_difference 'Admin.count' do
+	  	post :create, admin: { email: 'arnold@example.com', password: 'password123', password_confirmation: 'password123' }
+	  end
+  	admin_user = Admin.find_by(email: 'arnold@example.com')
+  	assert admin_user
+  	assert_redirected_to admin_admin_user_path(admin_user)
+  	assert_equal 'Successfully created new admin user.', flash[:success]
+  end	
+
+  def test_create_failure
+  	sign_in @admin
+  	assert_no_difference 'Admin.count' do
+	  	post :create, admin: { email: 'adam@example.com', password: 'password123', password_confirmation: 'password123' }
+	  end
+  	assert_template 'admin_users/new'
+  	assert_equal 'Error creating new admin user.', flash[:error]
+  end	
+
+  def test_redirect_non_logged_in_user_for_create
+  	sign_out :admin
+  	assert_no_difference 'Admin.count' do
+	  	post :create, admin: { email: 'adam45@example.com', password: 'password123', password_confirmation: 'password123' }
+	  end
+  	assert_redirected_to new_admin_session_path
+  end
+
+
+  # GET :edit /admin/admin_users/1/edit
   def test_edit_routing
   	assert_routing '/admin/admin_users/1/edit', { controller: 'admin/admin_users', action: 'edit', id: '1' }
   end
@@ -98,7 +132,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_redirected_to new_admin_session_path
   end
 
-  # PATCH :update /admin/admin_user/1
+  # PATCH :update /admin/admin_users/1
   def test_update_routing
   	assert_routing({ path: '/admin/admin_users/1', method: 'patch' }, { controller: 'admin/admin_users', action: 'update', id: '1' })
   end
@@ -127,7 +161,7 @@ class Admin::AdminUsersControllerTest < ActionController::TestCase
   	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
   end
 
-  # DELETE :destroy /admin/admin_user/1
+  # DELETE :destroy /admin/admin_users/1
   def test_delete_routing
   	assert_routing({ path: '/admin/admin_users/1', method: 'delete' }, { controller: 'admin/admin_users', action: 'destroy', id: '1' })
   end

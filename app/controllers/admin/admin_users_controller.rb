@@ -12,6 +12,17 @@ class Admin::AdminUsersController < AdminController
 		@admin_user = Admin.new
 	end
 
+	def create
+		@admin_user = Admin.new admin_params
+		if @admin_user.save
+			flash[:success] = 'Successfully created new admin user.'
+			redirect_to admin_admin_user_path(@admin_user)
+		else
+			flash[:error] = 'Error creating new admin user.'
+			render :new
+		end
+	end
+
 	def edit
 	end
 
