@@ -1,8 +1,6 @@
 Shadmin::Application.routes.draw do
 
-  root to: redirect('/admin/admin_users')
-
-  get '/admin', to: redirect('/admin/login')
+  root to: redirect('/admin')
 
   # Devise routes
   devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout' }
@@ -12,5 +10,8 @@ Shadmin::Application.routes.draw do
 
   namespace :admin do
     resources :admin_users
+    resources :dashboard, only: :index
   end
+
+  get '/admin', to: 'admin/dashboard#index'
 end
