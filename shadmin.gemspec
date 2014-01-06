@@ -18,5 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.2"
 
-  s.add_development_dependency "pg"
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'pg'
+  s.add_development_dependency 'thin'
 end
