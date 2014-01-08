@@ -16,3 +16,11 @@ I18n.enforce_available_locales = false
 class ActiveSupport::TestCase
 	include FactoryGirl::Syntax::Methods
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+
+  setup do
+    @routes = Shadmin::Engine.routes
+  end
+end

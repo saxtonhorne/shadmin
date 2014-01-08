@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount Shadmin::Engine => "/shadmin"
+  mount Shadmin::Engine => "/admin"
 end

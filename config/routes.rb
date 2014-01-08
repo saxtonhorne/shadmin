@@ -1,6 +1,10 @@
 Shadmin::Engine.routes.draw do
 	devise_for :admins, {
     class_name: 'Shadmin::Admin',
-    module: :devise
+    module: :devise,
+    path: '/',
+   	path_names: { sign_in: 'login', sign_out: 'logout' }
   }
+
+  resources :dashboard, only: :index
 end
