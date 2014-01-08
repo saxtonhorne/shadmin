@@ -77,3 +77,6 @@ pickle-email-*.html
 
 # vim artifacts
 **.swp
+
+# Rails engine files
+test/dummy
