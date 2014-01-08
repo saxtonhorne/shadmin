@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'devise'
   s.add_dependency "rails", "~> 4.0.2"
+  s.add_dependency 'jquery-rails'
 
   # Testing
   s.add_development_dependency 'minitest'
