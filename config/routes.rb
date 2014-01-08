@@ -7,4 +7,5 @@ Shadmin::Engine.routes.draw do
   }
 
   resources :dashboard, only: :index
+  resources :admin_users
 end

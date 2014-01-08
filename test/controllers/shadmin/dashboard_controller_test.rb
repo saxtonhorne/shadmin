@@ -22,7 +22,6 @@ module Shadmin
 	  def test_redirect_non_logged_in_user_for_index
 	  	sign_out @admin
 	  	get :index, use_route: :shadmin
-	  	# binding.pry
 	  	assert_redirected_to new_admin_session_path
 	  end
   end
