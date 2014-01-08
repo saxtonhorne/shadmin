@@ -168,15 +168,21 @@ module Shadmin
 	  end
 
 	  def test_delete
+	  	new_admin = create(:admin, email: 'bob@example.com')
 	  	sign_in @admin
-	  	admin_id = @admin.id
 	  	assert_difference 'Admin.count', -1 do
-	  		delete :destroy, use_route: :shadmin, id: admin_id	
+	  		delete :destroy, use_route: :shadmin, id: new_admin.id	
 	  	end
 	  	assert_redirected_to admin_users_path
 	  	assert_equal 'Successfully deleted admin user.', flash[:success]
-	  	refute Admin.where(id: admin_id).any?
+	  	refute Admin.where(id: new_admin.id).any?
 	  end	
+
+	  def test_logout_current_admin_if_same_as_deleted_admin_user
+	  	sign_in @admin
+  		delete :destroy, use_route: :shadmin, id: @admin.id	
+	  	assert_redirected_to controller: 'devise/sessions', action: 'destroy'
+	  end
 
 	  def test_redirect_non_logged_in_user_for_delete
 	  	sign_out @admin

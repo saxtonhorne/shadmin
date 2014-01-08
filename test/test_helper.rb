@@ -23,4 +23,8 @@ class ActionController::TestCase
   setup do
     @routes = Shadmin::Engine.routes
   end
+
+  def signed_in?
+  	!!session['warden.user.admin.key']
+ 	end
 end
