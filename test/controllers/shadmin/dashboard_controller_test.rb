@@ -6,10 +6,10 @@ module Shadmin
 			@admin = create(:admin)
 		end
 
-	  # GET :index /admin
-	  def test_index_routing
-			assert_routing '/dashboard', { controller: 'shadmin/dashboard', action: 'index' }
-	  end
+		# root path
+		def test_route_root_to_index
+			assert_routing '', { controller: 'shadmin/dashboard', action: 'index' }
+		end
 
 	  def test_index
 	  	sign_in @admin

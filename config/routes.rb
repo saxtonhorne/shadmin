@@ -6,6 +6,7 @@ Shadmin::Engine.routes.draw do
    	path_names: { sign_in: 'login', sign_out: 'logout' }
   }
 
-  resources :dashboard, only: :index
+  root to: 'dashboard#index'
+
   resources :admin_users
 end
