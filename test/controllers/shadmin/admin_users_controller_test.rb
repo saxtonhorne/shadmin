@@ -55,60 +55,60 @@ module Shadmin
 	  end
 
 	  # # GET :new /admin/admin_users/new
-	  # def test_new_routing
-	  # 	assert_routing '/admin/admin_users/new', { controller: 'admin/admin_users', action: 'new' }
-	  # end
+	  def test_new_routing
+	  	assert_routing '/admin_users/new', { controller: 'shadmin/admin_users', action: 'new' }
+	  end
 
-	  # def test_new
-	  # 	sign_in @admin
-	  # 	get :new
-	  # 	assert_response :success
-	  # 	assert_template layout: 'shadmin/application'
-	  # 	assert_template 'admin_users/new'
-	  # 	assert assigns(:admin_user), "Should assign @admin_user"
-	  # 	assert_select "form[action=?]", "/admin/admin_users"
-	  # 	assert_select "form[method=?]", 'post'
-	  # end	
+	  def test_new
+	  	sign_in @admin
+	  	get :new, use_route: :shadmin
+	  	assert_response :success
+	  	assert assigns(:admin_user), "Should assign @admin_user"
+	  	assert_template layout: 'shadmin/application'
+	  	assert_template 'admin_users/new'
+	  	assert_select "form[action=?]", "/admin/admin_users"
+	  	assert_select "form[method=?]", 'post'
+	  end	
 
-	  # def test_redirect_non_logged_in_user_for_new
-	  # 	sign_out :admin
-	  # 	get :new
-	  # 	assert_redirected_to new_admin_session_path
-	  # end
+	  def test_redirect_non_logged_in_user_for_new
+	  	sign_out @admin
+	  	get :new, use_route: :shadmin
+	  	assert_redirected_to new_admin_session_path
+	  end
 
 
 	  # # POST :create /admin/admin_users
-	  # def test_create_routing
-	  # 	assert_routing({ path: '/admin/admin_users', method: 'post' }, { controller: 'admin/admin_users', action: 'create' })
-	  # end
+	  def test_create_routing
+	  	assert_routing({ path: '/admin_users', method: 'post' }, { controller: 'shadmin/admin_users', action: 'create' })
+	  end
 
-	  # def test_create
-	  # 	sign_in @admin
-	  # 	assert_difference 'Admin.count' do
-		 #  	post :create, admin: { email: 'arnold@example.com', password: 'password123', password_confirmation: 'password123' }
-		 #  end
-	  # 	admin_user = Admin.find_by(email: 'arnold@example.com')
-	  # 	assert admin_user
-	  # 	assert_redirected_to admin_admin_user_path(admin_user)
-	  # 	assert_equal 'Successfully created new admin user.', flash[:success]
-	  # end	
+	  def test_create
+	  	sign_in @admin
+	  	assert_difference 'Admin.count' do
+		  	post :create, use_route: :shadmin, admin: { email: 'arnold@example.com', password: 'password123', password_confirmation: 'password123' }
+		  end
+	  	admin_user = Admin.find_by(email: 'arnold@example.com')
+	  	assert admin_user
+	  	assert_redirected_to admin_user_path(admin_user)
+	  	assert_equal 'Successfully created new admin user.', flash[:success]
+	  end	
 
-	  # def test_create_failure
-	  # 	sign_in @admin
-	  # 	assert_no_difference 'Admin.count' do
-		 #  	post :create, admin: { email: 'adam@example.com', password: 'password123', password_confirmation: 'password123' }
-		 #  end
-	  # 	assert_template 'admin_users/new'
-	  # 	assert_equal 'Error creating new admin user.', flash[:error]
-	  # end	
+	  def test_create_failure
+	  	sign_in @admin
+	  	assert_no_difference 'Admin.count' do
+		  	post :create, use_route: :shadmin, admin: { email: 'adam@example.com', password: 'password123', password_confirmation: 'password123' }
+		  end
+	  	assert_template 'admin_users/new'
+	  	assert_equal 'Error creating new admin user.', flash[:error]
+	  end	
 
-	  # def test_redirect_non_logged_in_user_for_create
-	  # 	sign_out :admin
-	  # 	assert_no_difference 'Admin.count' do
-		 #  	post :create, admin: { email: 'adam45@example.com', password: 'password123', password_confirmation: 'password123' }
-		 #  end
-	  # 	assert_redirected_to new_admin_session_path
-	  # end
+	  def test_redirect_non_logged_in_user_for_create
+	  	sign_out @admin
+	  	assert_no_difference 'Admin.count' do
+		  	post :create, use_route: :shadmin, admin: { email: 'adam45@example.com', password: 'password123', password_confirmation: 'password123' }
+		  end
+	  	assert_redirected_to new_admin_session_path
+	  end
 
 
 	  # # GET :edit /admin/admin_users/1/edit

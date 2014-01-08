@@ -4,7 +4,7 @@ module Shadmin
   class AdminUsersController < ApplicationController
 		before_filter :find_all_admin_users, only: :index
 		before_filter :find_admin_user, only: [:show, :edit, :update, :destroy]
-	# 	before_filter :build_admin_user, only: [:new, :create]
+		before_filter :build_admin_user, only: [:new, :create]
 
 		def index
 		end
@@ -12,18 +12,18 @@ module Shadmin
 		def show
 		end
 
-	# 	def new
-	# 	end
+		def new
+		end
 
-	# 	def create
-	# 		if @admin_user.save
-	# 			flash[:success] = 'Successfully created new admin user.'
-	# 			redirect_to admin_admin_user_path(@admin_user)
-	# 		else
-	# 			flash[:error] = 'Error creating new admin user.'
-	# 			render :new
-	# 		end
-	# 	end
+		def create
+			if @admin_user.save
+				flash[:success] = 'Successfully created new admin user.'
+				redirect_to admin_user_path(@admin_user)
+			else
+				flash[:error] = 'Error creating new admin user.'
+				render :new
+			end
+		end
 
 	# 	def edit
 	# 	end
@@ -46,13 +46,13 @@ module Shadmin
 
 		private
 
-	# 		def build_admin_user
-	# 			begin
-	# 				@admin_user = Admin.new admin_params
-	# 			rescue ActionController::ParameterMissing
-	# 				@admin_user = Admin.new
-	# 			end
-	# 		end
+			def build_admin_user
+				begin
+					@admin_user = Admin.new admin_params
+				rescue ActionController::ParameterMissing
+					@admin_user = Admin.new
+				end
+			end
 
 			def find_admin_user
 				begin
@@ -67,8 +67,8 @@ module Shadmin
 				@admin_users = Admin.all
 			end
 
-	# 		def admin_params
-	# 			params.require(:admin).permit(:email, :password, :password_confirmation)
-	# 		end
+			def admin_params
+				params.require(:admin).permit(:email, :password, :password_confirmation)
+			end
 	end
 end
