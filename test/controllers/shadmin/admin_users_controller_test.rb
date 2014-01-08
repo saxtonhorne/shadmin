@@ -99,7 +99,7 @@ module Shadmin
 		  	post :create, use_route: :shadmin, admin: { email: 'adam@example.com', password: 'password123', password_confirmation: 'password123' }
 		  end
 	  	assert_template 'admin_users/new'
-	  	assert_equal 'Error creating new admin user.', flash[:error]
+	  	assert_equal 'Error creating new admin user. Email has already been taken.', flash[:error]
 	  end	
 
 	  def test_redirect_non_logged_in_user_for_create
@@ -149,9 +149,9 @@ module Shadmin
 	  	create(:admin, email: 'bob@example.com')
 	  	sign_in @admin
 	  	# update user with same email as users(:bob)
-	  	patch :update, use_route: :shadmin, id: @admin.id, admin: { email: 'bob@example.com', password: 'password123', password_confirmation: 'password123' }
+	  	patch :update, use_route: :shadmin, id: @admin.id, admin: { email: 'bob@example.com', password: 'pass', password_confirmation: 'pass' }
 	  	assert_template 'admin_users/edit'
-	  	assert_equal 'Error updating admin user.', flash[:error]
+	  	assert_equal 'Error updating admin user. Email has already been taken. Password is too short (minimum is 8 characters).', flash[:error]
 	  	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
 	  end	
 

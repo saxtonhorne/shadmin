@@ -2,6 +2,8 @@ require_dependency "shadmin/application_controller"
 
 module Shadmin
   class AdminUsersController < ApplicationController
+  	include MessageHelper
+
 		before_filter :find_all_admin_users, only: :index
 		before_filter :find_admin_user, only: [:show, :edit, :update, :destroy]
 		before_filter :build_admin_user, only: [:new, :create]
@@ -20,7 +22,7 @@ module Shadmin
 				flash[:success] = 'Successfully created new admin user.'
 				redirect_to admin_user_path(@admin_user)
 			else
-				flash[:error] = 'Error creating new admin user.'
+				flash[:error] = build_message("Error creating new admin user.", @admin_user)
 				render :new
 			end
 		end
@@ -33,7 +35,7 @@ module Shadmin
 				flash[:success] = 'Successfully updated admin user.'
 				redirect_to admin_user_path(@admin_user)
 			else
-				flash.now[:error] = 'Error updating admin user.'
+				flash.now[:error] = build_message("Error updating admin user.", @admin_user)
 				render :edit
 			end
 		end
