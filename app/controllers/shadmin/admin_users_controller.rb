@@ -25,18 +25,18 @@ module Shadmin
 			end
 		end
 
-	# 	def edit
-	# 	end
+		def edit
+		end
 
-	# 	def update
-	# 		if @admin_user.update admin_params
-	# 			flash[:success] = 'Successfully updated admin user.'
-	# 			redirect_to admin_admin_user_path(@admin_user)
-	# 		else
-	# 			flash.now[:error] = 'Error updating admin user.'
-	# 			render :edit
-	# 		end
-	# 	end
+		def update
+			if @admin_user.update admin_params
+				flash[:success] = 'Successfully updated admin user.'
+				redirect_to admin_user_path(@admin_user)
+			else
+				flash.now[:error] = 'Error updating admin user.'
+				render :edit
+			end
+		end
 
 	# 	def destroy
 	# 		@admin_user.destroy!

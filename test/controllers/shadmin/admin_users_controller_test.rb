@@ -54,7 +54,7 @@ module Shadmin
 	  	assert_equal 'Could not find admin user with id=13', flash[:error]
 	  end
 
-	  # # GET :new /admin/admin_users/new
+	  # GET :new /admin/admin_users/new
 	  def test_new_routing
 	  	assert_routing '/admin_users/new', { controller: 'shadmin/admin_users', action: 'new' }
 	  end
@@ -77,7 +77,7 @@ module Shadmin
 	  end
 
 
-	  # # POST :create /admin/admin_users
+	  # POST :create /admin/admin_users
 	  def test_create_routing
 	  	assert_routing({ path: '/admin_users', method: 'post' }, { controller: 'shadmin/admin_users', action: 'create' })
 	  end
@@ -111,55 +111,56 @@ module Shadmin
 	  end
 
 
-	  # # GET :edit /admin/admin_users/1/edit
-	  # def test_edit_routing
-	  # 	assert_routing '/admin/admin_users/1/edit', { controller: 'admin/admin_users', action: 'edit', id: '1' }
-	  # end
+	  # GET :edit /admin/admin_users/1/edit
+	  def test_edit_routing
+	  	assert_routing '/admin_users/1/edit', { controller: 'shadmin/admin_users', action: 'edit', id: '1' }
+	  end
 
-	  # def test_edit
-	  # 	sign_in @admin
-	  # 	get :edit, id: @admin.id
-	  # 	assert_response :success
-	  # 	assert_template layout: 'shadmin/application'
-	  # 	assert_template 'admin_users/edit'
-	  # 	assert assigns(:admin_user), "Should assign @admin_user"
-	  # 	assert_select "form[action=?]", "/admin/admin_users/#{@admin.id}"
-	  # end	
+	  def test_edit
+	  	sign_in @admin
+	  	get :edit, use_route: :shadmin, id: @admin.id
+	  	assert_response :success
+	  	assert assigns(:admin_user), "Should assign @admin_user"
+	  	assert_template layout: 'shadmin/application'
+	  	assert_template 'admin_users/edit'
+	  	assert_select "form[action=?]", "/admin/admin_users/#{@admin.id}"
+	  end	
 
-	  # def test_redirect_non_logged_in_user_for_edit
-	  # 	sign_out :admin
-	  # 	get :edit, id: @admin.id
-	  # 	assert_redirected_to new_admin_session_path
-	  # end
+	  def test_redirect_non_logged_in_user_for_edit
+	  	sign_out @admin
+	  	get :edit, use_route: :shadmin, id: @admin.id
+	  	assert_redirected_to new_admin_session_path
+	  end
 
-	  # # PATCH :update /admin/admin_users/1
-	  # def test_update_routing
-	  # 	assert_routing({ path: '/admin/admin_users/1', method: 'patch' }, { controller: 'admin/admin_users', action: 'update', id: '1' })
-	  # end
+	  # PATCH :update /admin/admin_users/1
+	  def test_update_routing
+	  	assert_routing({ path: '/admin_users/1', method: 'patch' }, { controller: 'shadmin/admin_users', action: 'update', id: '1' })
+	  end
 
-	  # def test_update
-	  # 	sign_in @admin
-	  # 	patch :update, id: @admin.id, admin: { email: 'adam2@example.com', password: 'password123', password_confirmation: 'password123' }
-	  # 	assert_redirected_to admin_admin_user_path(@admin)
-	  # 	assert_equal 'Successfully updated admin user.', flash[:success]
-	  # 	assert_equal 'adam2@example.com', @admin.reload.email, "Email should have been updated"
-	  # end	
+	  def test_update
+	  	sign_in @admin
+	  	patch :update, use_route: :shadmin, id: @admin.id, admin: { email: 'adam2@example.com', password: 'password123', password_confirmation: 'password123' }
+	  	assert_redirected_to admin_user_path(@admin)
+	  	assert_equal 'Successfully updated admin user.', flash[:success]
+	  	assert_equal 'adam2@example.com', @admin.reload.email, "Email should have been updated"
+	  end	
 
-	  # def test_update_failure
-	  # 	sign_in @admin
-	  # 	# update user with same email as users(:bob)
-	  # 	patch :update, id: @admin.id, admin: { email: 'bob@example.com', password: 'password123', password_confirmation: 'password123' }
-	  # 	assert_template 'admin_users/edit'
-	  # 	assert_equal 'Error updating admin user.', flash[:error]
-	  # 	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
-	  # end	
+	  def test_update_failure
+	  	create(:admin, email: 'bob@example.com')
+	  	sign_in @admin
+	  	# update user with same email as users(:bob)
+	  	patch :update, use_route: :shadmin, id: @admin.id, admin: { email: 'bob@example.com', password: 'password123', password_confirmation: 'password123' }
+	  	assert_template 'admin_users/edit'
+	  	assert_equal 'Error updating admin user.', flash[:error]
+	  	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
+	  end	
 
-	  # def test_redirect_non_logged_in_user_for_update
-	  # 	sign_out :admin
-	  # 	patch :update, id: @admin.id, admin: { email: 'adam3@example.com', password: 'password123', password_confirmation: 'password123' }
-	  # 	assert_redirected_to new_admin_session_path
-	  # 	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
-	  # end
+	  def test_redirect_non_logged_in_user_for_update
+	  	sign_out @admin
+	  	patch :update, use_route: :shadmin, id: @admin.id, admin: { email: 'adam3@example.com', password: 'password123', password_confirmation: 'password123' }
+	  	assert_redirected_to new_admin_session_path
+	  	assert_equal 'adam@example.com', @admin.reload.email, "Email should not have been updated"
+	  end
 
 	  # # DELETE :destroy /admin/admin_users/1
 	  # def test_delete_routing
@@ -170,7 +171,7 @@ module Shadmin
 	  # 	sign_in @admin
 	  # 	admin_id = @admin.id
 	  # 	assert_difference 'Admin.count', -1 do
-	  # 		delete :destroy, id: admin_id	
+	  # 		delete :destroy, use_route: :shadmin, id: admin_id	
 	  # 	end
 	  # 	assert_redirected_to admin_users_path
 	  # 	assert_equal 'Successfully deleted admin user.', flash[:success]
@@ -180,7 +181,7 @@ module Shadmin
 	  # def test_redirect_non_logged_in_user_for_delete
 	  # 	sign_out :admin
 	  # 	assert_no_difference 'Admin.count' do
-		 #  	delete :destroy, id: @admin.id
+		 #  	delete :destroy, use_route: :shadmin, id: @admin.id
 		 #  end
 	  # 	assert_redirected_to new_admin_session_path
 	  # 	assert Admin.where(id: @admin.id).any?
