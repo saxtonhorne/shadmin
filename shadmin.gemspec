@@ -19,7 +19,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'devise'
   s.add_dependency "rails", "~> 4.0.2"
 
+  # Testing
   s.add_development_dependency 'minitest'
+  s.add_development_dependency 'factory_girl_rails'
+
   s.add_development_dependency 'pg'
   s.add_development_dependency 'thin'
   s.add_development_dependency 'pry'
