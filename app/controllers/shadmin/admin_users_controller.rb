@@ -38,11 +38,11 @@ module Shadmin
 			end
 		end
 
-	# 	def destroy
-	# 		@admin_user.destroy!
-	# 		flash[:success] = 'Successfully deleted admin user.'
-	# 		redirect_to admin_admin_users_path
-	# 	end
+		def destroy
+			@admin_user.destroy!
+			flash[:success] = 'Successfully deleted admin user.'
+			redirect_to admin_users_path
+		end
 
 		private
 
