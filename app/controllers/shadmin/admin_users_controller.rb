@@ -44,7 +44,7 @@ module Shadmin
 			@admin_user.destroy!
 			# logout user if same as current_user
 			if current_admin == @admin_user
-				redirect_to destroy_admin_session_path, via: :delete
+				sign_out_and_redirect current_admin
 			else
 				flash[:success] = 'Successfully deleted admin user.'
 				redirect_to admin_users_path

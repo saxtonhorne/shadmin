@@ -181,7 +181,7 @@ module Shadmin
 	  def test_logout_current_admin_if_same_as_deleted_admin_user
 	  	sign_in @admin
   		delete :destroy, use_route: :shadmin, id: @admin.id	
-	  	assert_redirected_to controller: 'devise/sessions', action: 'destroy'
+	  	refute signed_in?
 	  end
 
 	  def test_redirect_non_logged_in_user_for_delete
