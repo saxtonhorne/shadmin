@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   # Testing
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'factory_girl_rails'
+  s.add_development_dependency 'minitest-colorize'
 
   s.add_development_dependency 'pg'
   s.add_development_dependency 'thin'
