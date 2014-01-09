@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+	<%# binding.pry %>
+	<% if flash %>
+		<div id="flash-messages">
+		</div>
+	<% end %>
+
+	<%= link_to('logout', destroy_admin_session_path, method: :delete) if admin_signed_in? %>
+
+	<%= yield %>
 
 </body>
 </html>
