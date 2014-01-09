@@ -8,10 +8,8 @@
 </head>
 <body>
 
-	<%# binding.pry %>
-	<% if flash %>
-		<div id="flash-messages">
-		</div>
+	<% flash.each do |key, msg| %>
+	  <%= content_tag :div, msg, id: key %>
 	<% end %>
 
 	<%= link_to('logout', destroy_admin_session_path, method: :delete) if admin_signed_in? %>
