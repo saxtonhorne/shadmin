@@ -1,6 +1,6 @@
 <br><br>
 
-<%= link_to 'Back to Admin Users', admin_users_path %>
+<%= link_to 'Back to Admin Users', shadmin.admin_users_path %>
 
 <br><br>
 
@@ -10,5 +10,5 @@ Email: <%= @admin_user.email %>
 
 <br><br>
 
-<%= link_to 'Edit', edit_admin_user_path(@admin_user) %> | 
-<%= link_to 'Delete', admin_user_path(@admin_user), method: :delete, data: { confirm: 'Are you sure you want to delete this admin user?' } %>
+<%= link_to 'Edit', shadmin.edit_admin_user_path(@admin_user) %> | 
+<%= link_to 'Delete', shadmin.admin_user_path(@admin_user), method: :delete, data: { confirm: 'Are you sure you want to delete this admin user?' } %>
