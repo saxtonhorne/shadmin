@@ -12,7 +12,7 @@
 	  <%= content_tag :div, msg, id: key %>
 	<% end %>
 
-	<%= link_to('logout', destroy_admin_session_path, method: :delete) if admin_signed_in? %>
+	<%= link_to('logout', shadmin.destroy_admin_session_path, method: :delete) if admin_signed_in? %>
 
 	<%= yield %>
 

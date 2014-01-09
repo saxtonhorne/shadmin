@@ -17,6 +17,7 @@ module Shadmin
 			sign_in @admin
 			get :index
 			assert_response :success
+			assert_template layout: 'shadmin/application'
 			assert_select 'div', 'Admin: Posts Index Controller'
 		end
 
@@ -28,7 +29,6 @@ module Shadmin
 		end
 
 		def test_admin_posts_controller_inherits_shadmin_authentication
-			# binding.pry
 			sign_out @admin
 			get :index
 			assert_redirected_to '/admin/login'
