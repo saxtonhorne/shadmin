@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'rails/generators/test_case'
 require 'rails/generators/shadmin/resource/resource_generator'
 
 module Shadmin
