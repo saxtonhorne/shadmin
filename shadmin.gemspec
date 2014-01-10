@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Adam Jacox"]
   s.email       = ["yellowjacox@gmail.com"]
   s.homepage    = "http://github.com/saxtonhorne/shadmin"
-  s.summary     = "Mountable Rails engine for simple admin backend"
-  s.description = "Mountable Rails engine for simple admin backend"
+  s.summary     = "Rails engine for simple admin backend"
+  s.description = "A simple mountable Rails engine for a simple admin backend. Think of ActiveAdmin without the DSL...and a lot less features."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
