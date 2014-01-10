@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     shadmin (0.0.1)
-      devise
-      jquery-rails
+      devise (~> 3.2.2)
+      jquery-rails (~> 3.0.4)
       rails (~> 4.0.2)
 
 GEM
