@@ -9,6 +9,10 @@ module Shadmin
 		  	template 'controllers/shadmin_controller.rb', File.join('app/controllers/admin', "#{file_name}_controller.rb")
 		  end
 
+		  def add_resource_route
+		  	route "namespace :admin do\nresources :#{file_name}\nend"
+		  end
+
 		  def create_shadmin_view_files
 		  	%w( index show new edit _form ).each do |view|
 		  		view_file = "#{view}.html.erb"
