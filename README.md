@@ -17,6 +17,12 @@ Install Shadmin migrations and initial Admin user:
 	$ bundle exec rake shadmin:install:migrations
 	$ bundle exec rake db:migrate
 
+Create initial Admin user (however you like):
+
+	Shadmin::Admin.create email: 'admin@example.com', 
+	                      password: 'password', 
+	                      password_confirmation: 'admin@example.com'
+
 Mount engine in routes:
 
 	# config/routes.rb
@@ -27,7 +33,7 @@ Mount engine in routes:
 You should now have a basic admin backend complete with admin user authentication and an AdminUsers resource.
 
 The default credentials are:
-username: admin
+username: admin@example.com
 password: password
 
 ## Adding Resources

@@ -16,9 +16,9 @@ module Shadmin
 
 	  def test_view_template_files_created
 	  	run_generator ['BlogCategories']
-	  	assert_file 'app/views/admin/blog_categories/index.html.erb'
-	  	assert_file 'app/views/admin/blog_categories/show.html.erb'
-	  	assert_file 'app/views/admin/blog_categories/_form.html.erb'
+	  	%w( index show new edit _form ).each do |view|
+		  	assert_file "app/views/admin/blog_categories/#{view}.html.erb"
+		  end
 	  end
 
 	  private
