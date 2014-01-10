@@ -10,9 +10,16 @@ module Shadmin
 	  setup :prepare_destination
 	  teardown :cleanup_temp_files
 
-	  def test_controller_template_files_created_successfully
+	  def test_controller_template_files_created
 	    run_generator ['BlogCategories']
-	    assert_file "app/views/admin/blog_categories_controller.rb"
+	    assert_file "app/controllers/admin/blog_categories_controller.rb"
+	  end
+
+	  def test_view_template_files_created
+	  	run_generator ['BlogCategories']
+	  	assert_file 'app/views/admin/blog_categories/index.html.erb'
+	  	assert_file 'app/views/admin/blog_categories/show.html.erb'
+	  	assert_file 'app/views/admin/blog_categories/_form.html.erb'
 	  end
 
 	  private

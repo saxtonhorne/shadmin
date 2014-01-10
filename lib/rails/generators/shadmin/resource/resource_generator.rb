@@ -5,8 +5,15 @@ module Shadmin
 
 		  argument :resource_name, type: :string
 
-		  def copy_shadmin_controller_file
-		  	template 'shadmin_controller.rb', File.join('app/views/admin', "#{file_name}_controller.rb")
+		  def create_shadmin_controller_file
+		  	template 'shadmin_controller.rb', File.join('app/controllers/admin', "#{file_name}_controller.rb")
+		  end
+
+		  def create_shadmin_view_files
+		  	%w( index show _form ).each do |view|
+		  		view_file = "#{view}.html.erb"
+			  	template view_file, File.join('app/views/admin', file_name, view_file)
+		  	end
 		  end
 
 		  private
