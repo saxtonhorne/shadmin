@@ -1,17 +1,13 @@
-Shadmin::Application.routes.draw do
+Shadmin::Engine.routes.draw do
+	devise_for :admins, {
+    class_name: 'Shadmin::Admin',
+    module: :devise,
+  	controllers: { sessions: 'shadmin/sessions' },
+    path: '/',
+   	path_names: { sign_in: 'login', sign_out: 'logout' }
+  }
 
-  root to: redirect('/admin')
+  root to: 'dashboard#index', as: 'admin_root'
 
-  # Devise routes
-  devise_for :admins, path: 'admin', path_names: { sign_in: 'login', sign_out: 'logout' }
-  devise_scope :admin do
-    get 'admin/logout', to: 'devise/sessions#destroy', via: :delete
-  end
-
-  namespace :admin do
-    resources :admin_users
-    resources :dashboard, only: :index
-  end
-
-  get '/admin', to: 'admin/dashboard#index'
+  resources :admin_users
 end

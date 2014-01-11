@@ -1,0 +1,14 @@
+<h1>Admin Users</h1>
+
+<%= link_to 'Create New Admin User', shadmin.new_admin_user_path %>
+
+<ul>
+	<% @admin_users.each do |admin| %>
+		<li>
+			<%= admin.email %> 
+			<%= link_to 'Show', shadmin.admin_user_path(admin) %> | 
+			<%= link_to 'Edit', shadmin.edit_admin_user_path(admin) %> | 
+			<%= link_to 'Delete', shadmin.admin_user_path(admin), method: :delete, data: { confirm: 'Are you sure you want to delete this admin user?' } %>
+		</li>
+	<% end %>
+</ul>

@@ -1,19 +1,32 @@
-ENV["RAILS_ENV"] ||= "test"
-require File.expand_path('../../config/environment', __FILE__)
+# Configure Rails Environment
+ENV['RAILS_ENV'] = 'test'
+
+require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 require 'rails/test_help'
+require 'rails/generators/test_case'
+require 'minitest-colorize'
+require 'factory_girl_rails'
+require 'pry'
+
+Rails.backtrace_cleaner.remove_silencers!
+
+# Load support files
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
+I18n.enforce_available_locales = false
 
 class ActiveSupport::TestCase
-  ActiveRecord::Migration.check_pending!
-
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
-
-  # Add more helper methods to be used by all tests here...
+	include FactoryGirl::Syntax::Methods
 end
 
 class ActionController::TestCase
-	include Devise::TestHelpers
+  include Devise::TestHelpers
+
+  setup do
+    @routes = Shadmin::Engine.routes
+  end
+
+  def signed_in?
+  	!!session['warden.user.admin.key']
+ 	end
 end
