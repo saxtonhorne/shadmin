@@ -1,0 +1,44 @@
+// Horizontal Rules
+// ==========================================================================
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+// Google Maps
+// ==========================================================================
+
+// Don't reset the *:before & *:after
+
+.map * {
+  @extend %default-box-model;
+  & img {max-width: none;}
+}
+
+// Ancient Browser Alert
+// ==========================================================================
+
+.ancient {
+  background: #666666;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  margin: 0;
+  padding: 0.5em 1em;
+  position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  text-align: center;
+  z-index: 1000000;
+}
+
+.ancient a,
+.ancient a:visited {
+  color: #ffffff;
+  text-decoration: underline;
+}

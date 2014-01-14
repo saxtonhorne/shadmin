@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Shadmin</title>
-  <%= stylesheet_link_tag "shadmin/application", media: "all" %>
-  <%= javascript_include_tag "shadmin/application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!--[if lt IE 9]>      <html class="no-js old-ie"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shadmin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<% flash.each do |key, msg| %>
-	  <%= content_tag :div, msg, id: key %>
-	<% end %>
+    <%= stylesheet_link_tag "shadmin/application", media: "all" %>
+    <%= javascript_include_tag "shadmin/application" %>
+    <%= csrf_meta_tags %>
 
-	<%= link_to('logout', shadmin.destroy_admin_session_path, method: :delete) if admin_signed_in? %>
+  </head>
 
-	<%= yield %>
+  <body>
+    <!--[if lt IE 8]>
+      <p class="ancient">You are using an outdated browser. <a href="http://browsehappy.com/" target="_blank">Upgrade your browser today</a> to better experience this site.</p>
+    <![endif]-->
 
-</body>
+    <% flash.each do |key, msg| %>
+      <%= content_tag :div, msg, id: key %>
+    <% end %>
+
+    <%= link_to('logout', shadmin.destroy_admin_session_path, method: :delete) if admin_signed_in? %>
+
+    <header class="header" role="banner">
+      <a href="#main" class="visually-hidden">Skip to content</a>
+      <nav class="nav" role="navigation">
+      </nav>
+    </header>
+
+    <div id="main" class="main" role="main">
+      <%= yield %>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+    </footer>
+
+
+  </body>
 </html>

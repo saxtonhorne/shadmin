@@ -1,0 +1,88 @@
+// Sass Mixins
+// ==========================================================================
+
+// At-Least & Until: http://codepen.io/imathis/pen/BDzcI
+
+// Media Queries - Mobile-First
+@mixin at-least($point) {
+  @if $point == goldilocks {
+    @media (min-width: 30em) { @content; }
+  }
+  @if $point == mama-bear {
+    @media (min-width: 50em) { @content; }
+  }
+  @if $point == papa-bear {
+    @media (min-width: 75em) { @content; }
+  }
+  @else {
+    @media (min-width: $point) { @content; }  // Custom
+  }
+}
+
+// Media Queries - Desktop-First
+@mixin until($point) {
+  @if $point == mama-bear {
+    @media (max-width: 75em) { @content; }
+  }
+  @if $point == goldilocks {
+    @media (max-width: 50em) { @content; }
+  }
+  @if $point == baby-bear {
+    @media (max-width: 30em) { @content; }
+  }
+  @else {
+    @media (max-width: $point) { @content; }  // Custom
+  }
+}
+
+// Media Queries - Retina - http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss & http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries/
+@mixin image-2x($image, $width, $height) {
+  @media 
+    only screen and (-webkit-min-device-pixel-ratio: 2), 
+    only screen and (min-resolution: 192dpi) { 
+      background-image: url($image); // Change "url" to "image-url" if using Rails or Middleman
+      background-size: $width $height;
+    }
+}
+
+// Sass Extends
+// ==========================================================================
+
+// Clearfix: http://web-design-weekly.com/2013/05/12/handy-sass-mixins
+%clear-after {
+  & {
+    *zoom: 1;
+  }
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+%default-box-model {
+  box-sizing: content-box;
+}
+
+// Fix Weirdness During CSS Transitions
+%fix-transition-bugs {
+  backface-visibility: hidden; // Fixes flickering of objects during CSS transitions
+  transform: rotate3d(0,0,0,0); // Fixes font-weight shifting during CSS transitions
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Sass Variables
+// ==========================================================================
