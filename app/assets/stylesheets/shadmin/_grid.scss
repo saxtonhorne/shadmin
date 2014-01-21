@@ -6,10 +6,12 @@
 }
 
 html {
+  height: 100%;
   overflow-x: hidden;
 }
 
 body {
+  height: 100%;
   overflow-x: hidden;
 }
 
@@ -21,6 +23,9 @@ $main-width: 75em; // Change your main area width here
 .main {
   margin: 0 auto;
   max-width: $main-width;
+  padding: 15px;
+  float: left;
+  width: 80%; // other 20% goes to side-nav
 }
 
 // IE8 Min-Width

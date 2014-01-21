@@ -1,0 +1,109 @@
+
+.index {
+  margin: 2rem;
+  float: left;
+  width: 100%;
+
+  .index-nav {
+    @extend .clear-after;
+    line-height: normal;
+  }
+
+  .index-nav-count {
+    float: left;
+    font-size: 2em;
+    color: $color-gray;
+    line-height: 1em;
+  }
+
+  .pagination {
+    color: $color-gray;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+
+    li {
+      float: left;
+      display: block;
+
+      a {
+
+        &:not(.arrow) {
+
+          &:hover {
+            border: $color-red 1px solid;
+            color: $color-red;
+            text-decoration: none;
+            cursor: pointer;
+
+            &.active {
+              background: darken($color-red, 3%);
+              color: $color-white;
+            }
+
+          }
+
+        }
+
+        display: block;
+        padding: 0.05rem 0.5rem 0.05rem;
+        border-radius: 3px;
+        border: transparent 1px solid;
+        margin-left: 0.5rem;
+
+        &.active {
+          background: $color-red;
+          color: $color-white;
+        }
+
+        &.disabled {
+          color: $color-gray-light;
+          &:hover {
+            border: transparent 1px solid;
+            color: $color-gray-light;
+            cursor: default;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+
+
+.index-table {
+  margin-top: 10px;
+  clear: both;
+  li {
+
+    line-height: 2.5rem;
+    padding-left: 10px;
+
+    &:nth-child(odd) {
+      background: $color-gray-light;
+    }
+    &:nth-child(even) {
+      background: lighten($color-gray-light, 10%);
+    }
+
+    &:hover {
+      background: darken($color-gray-light, 10%);
+      &.header {
+        background: $color-red;
+        color: $color-white;
+      }
+    }
+
+    &.header-row {
+      background: $color-red;
+      color: $color-white;
+    }
+  }
+}
+
+.index-ctrls {
+  text-align: right;
+  line-height: 3rem;
+}

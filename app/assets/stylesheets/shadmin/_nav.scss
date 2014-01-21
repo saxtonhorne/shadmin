@@ -1,3 +1,53 @@
+
 .nav {
-  
+
+  @extend %clear-after;
+
+  background: darken($color-red, 20%);
+  color: $color-white;
+  height: 2rem;
+  padding: 3rem;
+  width: 100%;
+
+  a {
+    text-align: right;
+  }
+
+  .right {
+    float: right;
+  }
+}
+
+.side-nav {
+  background: $color-gray-light;
+  float: left;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+
+  li {
+
+    border-bottom: 1px solid $color-gray;
+    font-size: 1.4rem;
+    height: auto;
+    text-align: right;
+
+    a {
+
+      display: block;
+      font-weight: normal;
+      padding: 1rem;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+        background: darken($color-gray-light, 3%);
+      }
+
+      &.active {
+        background: darken($color-gray-light, 15%);
+      }
+    }
+  }
 }

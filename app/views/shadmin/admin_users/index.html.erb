@@ -1,14 +1,34 @@
-<h1>Admin Users</h1>
+<div class="index">
+    <ol class="breadcrumb">
 
-<%= link_to 'Create New Admin User', shadmin.new_admin_user_path %>
+        <!--todo: swich with rails path-->
+        <li><%= link_to 'Dashboard', '/admin' %></li>
+        <li>Admin Users</li>
+    </ol>
+    <div class="index-ctrls"><%= link_to 'Create New Admin User', shadmin.new_admin_user_path %></a></div>
+    <div class="index-nav">
+        <div class="index-nav-count">1-<%= @admin_users.count %> of <%= @admin_users.count %></div>
+        <ul class="pagination">
+            <li><a class="disabled arrow">&lt;&lt;</a></li>
+            <li><a class="active">1</a></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li>&hellip;</li>
+            <li><a>6</a></li>
+            <li><a>7</a></li>
+            <li><a>8</a></li>
+            <li><a class="arrow">&gt;&gt;</a></li>
+        </ul>
+    </div>
+    <ul class="index-table">
+        <li class="header-row">Email</li>
+        <% @admin_users.each do |admin| %>
+        <li>
+            <%= link_to admin.email, shadmin.admin_user_path(admin) %>
 
-<ul>
-	<% @admin_users.each do |admin| %>
-		<li>
-			<%= admin.email %> 
-			<%= link_to 'Show', shadmin.admin_user_path(admin) %> | 
-			<%= link_to 'Edit', shadmin.edit_admin_user_path(admin) %> | 
-			<%= link_to 'Delete', shadmin.admin_user_path(admin), method: :delete, data: { confirm: 'Are you sure you want to delete this admin user?' } %>
-		</li>
-	<% end %>
-</ul>
+            <%= link_to 'Edit', shadmin.edit_admin_user_path(admin) %> |
+            <%= link_to 'Delete', shadmin.admin_user_path(admin), method: :delete, data: { confirm: 'Are you sure you want to delete this admin user?' } %>
+        </li>
+        <% end %>
+    </ul>
+</div>

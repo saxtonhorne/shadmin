@@ -37,10 +37,10 @@
 
 // Media Queries - Retina - http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss & http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries/
 @mixin image-2x($image, $width, $height) {
-  @media 
-    only screen and (-webkit-min-device-pixel-ratio: 2), 
-    only screen and (min-resolution: 192dpi) { 
-      background-image: url($image); // Change "url" to "image-url" if using Rails or Middleman
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+      background-image: image-url($image); // Change "url" to "image-url" if using Rails or Middleman
       background-size: $width $height;
     }
 }
@@ -86,3 +86,15 @@
 
 // Sass Variables
 // ==========================================================================
+$color-red: #ec342e;
+$color-slate: #404847;
+$color-gray: #858585;
+$color-gray-light: lighten($color-gray, 40%);
+$color-white: #FFFFFF;
+
+#notice {
+  border: $color-red 1px solid;
+  padding: 0.5em;
+  text-align: center;
+}
+
