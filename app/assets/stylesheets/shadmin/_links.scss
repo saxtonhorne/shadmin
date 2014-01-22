@@ -1,12 +1,15 @@
 a {
+  color: $color-slate;
   cursor: pointer;
   text-decoration: none;
+
 
   &:visited {
     color: $color-slate;
   }
 
   &:hover {
+    color: $color-red;
     text-decoration: underline;
   }
 }
@@ -42,10 +45,6 @@ a {
 
   .left {
     float: left;
-  }
-
-  a {
-    color: $color-slate;
   }
 
   li {

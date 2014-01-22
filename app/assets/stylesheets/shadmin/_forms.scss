@@ -1,6 +1,9 @@
 // Reset Form Elements
 // ==========================================================================
 
+$form-padding: 5px; // use px
+$form-height: 1rem;
+
 form {
   margin: 0;
   width: 100%;
@@ -15,8 +18,9 @@ fieldset {
 label {
   color: $color-gray;
   float: left;
+  height: $form-height;
   margin: 0; // keeps the flash messages aligned with the label
-  padding: 5px;
+  padding: ($form-padding / 2 + 1px) 0.75rem;
   text-align: right;
   width: 33%;
 }
@@ -32,7 +36,7 @@ textarea {
 
   border: 1px solid $color-gray-light;
   margin: 0;
-  padding: 0.4em;
+  padding: $form-padding;
   font-size: 1em;
   word-break: normal;
   -webkit-appearance: none;
