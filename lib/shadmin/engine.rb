@@ -4,8 +4,8 @@ module Shadmin
 
     # Set Devise controllers to use Shadmin application layout
     config.to_prepare do
-		  Devise::SessionsController.layout 'shadmin/application'
-		  Devise::PasswordsController.layout 'shadmin/application'
+		  Devise::SessionsController.layout 'shadmin/sessions'
+		  Devise::PasswordsController.layout 'shadmin/sessions'
 		end
   end
 end

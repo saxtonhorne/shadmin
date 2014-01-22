@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]>      <html class="no-js old-ie"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shadmin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag "shadmin/application", media: "all" %>
+    <%= javascript_include_tag "shadmin/application" %>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+  <!--[if lt IE 8]>
+  <p class="ancient">You are using an outdated browser.
+    <a href="http://browsehappy.com/" target="_blank">Upgrade your browser today</a> to better experience this site.</p>
+  <![endif]-->
+
+  <header class="header" role="banner">
+    <a href="#main" class="visually-hidden">Skip to content</a>
+    <nav class="nav" role="navigation">
+      <!--todo: Insert client's branding here-->
+      <!--todo: switch with dynamic path back to dashboard-->
+      <%= link_to '/admin', {:class=>"logo"} do %>
+        Capital<span class="logo-accent">CRE</span>
+      <% end %>
+      <a class="logo"></a>
+      <%= link_to('logout', shadmin.destroy_admin_session_path, { method: :delete, :class=>"right" } ) if admin_signed_in? %>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <div class="side-nav">
+      <ul>
+        <li><a>Properties</a></li>
+        <li><a>Brokers</a></li>
+        <!--todo: 'active' class should (only) be enabled if this is the current page-->
+        <li><%= link_to 'Admin Users', shadmin.admin_users_path, {:class=>"active"} %></li>
+      </ul>
+    </div>
+    <div id="main" class="main" role="main">
+      <% flash.each do |key, msg| %>
+      <%= content_tag :div, msg, id: key %>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+  </footer>
+  </body>
+
+</html>
