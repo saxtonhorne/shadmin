@@ -1,7 +1,7 @@
 
 .index {
-  margin: 2rem;
   float: left;
+  // margin: 0; // margin jacks it all up
   width: 100%;
 
   .index-nav {
@@ -44,6 +44,11 @@
 
           }
 
+          &:active {
+            background: darken($color-red, 3%);
+            color: $color-white;
+          }
+
         }
 
         display: block;
@@ -65,21 +70,19 @@
             cursor: default;
           }
         }
-
       }
     }
   }
-
 }
-
 
 .index-table {
   margin-top: 10px;
   clear: both;
-  li {
+  & > li {
 
     line-height: 2.5rem;
     padding-left: 10px;
+    padding-right: 10px;
 
     &:nth-child(odd) {
       background: $color-gray-light;
@@ -101,9 +104,4 @@
       color: $color-white;
     }
   }
-}
-
-.index-ctrls {
-  text-align: right;
-  line-height: 3rem;
 }

@@ -17,16 +17,18 @@ body {
 
 // Main
 // ==========================================================================
+$max-width: 75em;
 
-$main-width: 75em; // Change your main area width here
+.main-container {
+  height: 100%;
+}
 
 .main {
-  margin: 0 auto;
-  max-width: $main-width;
-  padding: 15px;
   float: left;
-  width: 80%; // other 20% goes to side-nav
+  padding: 3%; // todo: get a real solution for side nav going down 100%
+  width: 80%; // other 20% taken up by sub nav
 }
+
 
 // IE8 Min-Width
 // ==========================================================================
@@ -36,6 +38,5 @@ $main-width: 75em; // Change your main area width here
     overflow-x: auto;
   }
   .main {
-    min-width: $main-width;
   }
 }

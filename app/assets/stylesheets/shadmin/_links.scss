@@ -1,5 +1,9 @@
 a {
+  cursor: pointer;
+  text-decoration: none;
+
   &:visited {
+    color: $color-slate;
   }
 
   &:hover {
@@ -17,11 +21,10 @@ a {
   margin: 0.5rem;
 
   li {
-
     display: inline;
 
     &:after {
-      content: ' / ';
+      content: ' > ';
     }
 
     &:last-child {
@@ -31,4 +34,23 @@ a {
       }
     }
   }
+}
+
+.controls {
+  line-height: 3rem;
+  text-align: right;
+
+  .left {
+    float: left;
+  }
+
+  a {
+    color: $color-slate;
+  }
+
+  li {
+    display: inline;
+    margin-left: 0.7rem;
+  }
+
 }

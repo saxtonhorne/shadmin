@@ -3,31 +3,40 @@
 
 form {
   margin: 0;
+  width: 100%;
 }
 
 fieldset {
-  border: 0;
+  border: 1px solid $color-gray-light;
   margin: 0;
   padding: 0;
 }
 
 label {
-
+  color: $color-gray;
+  float: left;
+  margin: 0; // keeps the flash messages aligned with the label
+  padding: 5px;
+  text-align: right;
+  width: 33%;
 }
 
-input[type="email"]
-input[type="password"],,
+input[type="email"],
+input[type="password"],
 input[type="search"],
 input[type="tel"],
 input[type="text"],
 input[type="url"],
 textarea {
-  border: 0;
-  border-radius: 0;
+  @extend %font-trade-roman;
+
+  border: 1px solid $color-gray-light;
   margin: 0;
   padding: 0.4em;
+  font-size: 1em;
   word-break: normal;
   -webkit-appearance: none;
+  width: 33%;
 }
 
 textarea {
@@ -44,9 +53,15 @@ textarea {
 input[type="button"],
 input[type="submit"],
 input[type="cancel"] {
+  @extend %font-trade-roman;
+  background: $color-slate;
   border: 0;
-  border-radius: 0;
+  border-radius: 3px;
+  color: white;
   cursor: pointer;
   display: inline-block;
+  font-size: 1em;
+  margin: 0 10px;
+  padding: 0.25em 0.5em;
   white-space: nowrap;
 }

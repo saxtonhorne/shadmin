@@ -15,8 +15,13 @@
 
 	<br><br>
 
-	<%= f.submit 'Save' %>
 
-	<%= link_to 'Cancel', action_path %>
+<ul class="controls">
+    <li><%= link_to 'Cancel', action_path %></li>
+    <li><%= f.submit 'Save' %></li>
+</ul>
+
+
+
 
 <% end %>

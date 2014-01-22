@@ -10,7 +10,15 @@
       "shadmin/TradeGothicRoman.ttf",
       "shadmin/TradeGothicRoman.woff",
       "shadmin/TradeGothicRoman.svg"),
-  "shadmin/TradeGothicRoman.eot"
+  "shadmin/TradeGothicRoman.eot", 400
+);
+
+@include font-face("Trade Gothic Roman",
+  font-files(
+      "shadmin/TradeGothicBold.ttf",
+      "shadmin/TradeGothicBold.woff",
+      "shadmin/TradeGothicBold.svg"),
+  "shadmin/TradeGothicBold.eot", 700
 );
 
 @include font-face("Trade Gothic Condensed Bold 20",
@@ -21,10 +29,19 @@
   "shadmin/TradeGothicCond20Bold.eot"
 );
 
+@include font-face("Trade Gothic Roman Light",
+  font-files(
+      "shadmin/TradeGothicLight.ttf",
+      "shadmin/TradeGothicLight.woff",
+      "shadmin/TradeGothicLight.svg"),
+  "shadmin/TradeGothicLight.eot"
+);
+
 
 // Font Stacks
 
 %font-trade-roman {font-family: "Trade Gothic Roman", Helvetica, Arial, sans-serif;}
+%font-trade-roman-light {font-family: "Trade Gothic Roman Light", Helvetica, Arial, sans-serif;}
 %font-trade-condensed {font-family: "Trade Gothic Condensed Bold 20", Helvetica, Arial, sans-serif;}
 
 // Global Font
@@ -75,7 +92,23 @@ body {
 // ==========================================================================
 
 h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLogibility;
+}
 
+// todo: replace these headers with some golden mean calculation
+h1 {
+  font-size: 2em;
+  line-height: 3em;
+}
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+
+h3 {
+  font-size: 0.72em;
+  line-height: 1.08em;
 }
 
 // Misc
@@ -91,4 +124,33 @@ ul, ol {
 
 blockquote {
 
+}
+
+// Flash Messages
+// ==========================================================================
+%flash {
+  border-color: $color-gray;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  display: block;
+  margin-left: 33%;
+  padding: 0.5em;
+  text-align: center;
+  width: 33%;
+}
+
+#error {
+  @extend %flash;
+  border-color: $color-red;
+}
+
+#notice {
+  @extend %flash;
+  border-color: $color-gray;
+}
+
+#success {
+  @extend %flash;
+  border-color: $color-gray-light;
 }
