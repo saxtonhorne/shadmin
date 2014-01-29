@@ -3,23 +3,16 @@
   <ol class="breadcrumb">
     <li>Admin Users</li>
   </ol>
+
   <ul class="controls">
     <li><%= link_to 'Create New Admin User', shadmin.new_admin_user_path %></li>
   </ul>
+
   <div class="index-nav">
     <div class="index-nav-count">1-<%= @admin_users.count %> of <%= @admin_users.count %></div>
-    <ul class="pagination">
-      <li><a class="disabled arrow">&lt;&lt;</a></li>
-      <li><a class="active">1</a></li>
-      <li><a>2</a></li>
-      <li><a>3</a></li>
-      <li>&hellip;</li>
-      <li><a>6</a></li>
-      <li><a>7</a></li>
-      <li><a>8</a></li>
-      <li><a class="arrow">&gt;&gt;</a></li>
-    </ul>
+    <%= paginate @admin_users %>
   </div>
+
   <ul class="index-table">
     <li class="header-row">Email</li>
     <% @admin_users.each do |admin| %>

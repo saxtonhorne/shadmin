@@ -4,7 +4,7 @@ module Shadmin
   class AdminUsersController < ApplicationController
   	include MessageHelper
 
-		before_filter :find_all_admin_users, only: :index
+		before_filter :find_admin_users_by_page, only: :index
 		before_filter :find_admin_user, only: [:show, :edit, :update, :destroy]
 		before_filter :build_admin_user, only: [:new, :create]
 
@@ -70,8 +70,8 @@ module Shadmin
 				end
 			end
 
-			def find_all_admin_users
-				@admin_users = Admin.all
+			def find_admin_users_by_page
+				@admin_users = Admin.page params[:page]
 			end
 
 			def admin_params
