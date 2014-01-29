@@ -3,7 +3,6 @@ a {
   cursor: pointer;
   text-decoration: none;
 
-
   &:visited {
     color: $color-slate;
   }
@@ -45,6 +44,11 @@ a {
 
   .left {
     float: left;
+  }
+
+  .right {
+    float: right;
+    margin-right: 10px;
   }
 
   li {

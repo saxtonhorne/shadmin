@@ -129,10 +129,10 @@ blockquote {
 // Flash Messages
 // ==========================================================================
 %flash {
-  border-color: $color-gray;
   border-style: solid;
   border-width: 2px;
   border-radius: 3px;
+  color: $color-gray;
   display: block;
   margin-left: 33%;
   padding: 0.5em;
@@ -140,7 +140,7 @@ blockquote {
   width: 33%;
 }
 
-#error {
+#error, #error_explanation, #alert {
   @extend %flash;
   border-color: $color-red;
 }

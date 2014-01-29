@@ -7,6 +7,10 @@ $form-height: 1rem;
 form {
   margin: 0;
   width: 100%;
+
+  div {
+    margin-bottom: 1em;
+  }
 }
 
 fieldset {

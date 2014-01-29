@@ -1,23 +1,20 @@
 <%= form_for @admin_user, url: action_path do |f| %>
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
 
-	<%= f.label :email %>
-	<%= f.text_field :email %>
+  </div>
 
-	<br><br>
-
-	<%= f.label :password %>
-	<%= f.password_field :password %>
-
-	<br><br>
-
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation %>
-
-	<br><br>
-
-	<ul class="controls">
-	  <li><%= link_to 'Cancel', action_path %></li>
-	  <li><%= f.submit 'Save' %></li>
-	</ul>
-
+  <ul class="controls">
+    <li><%= link_to 'Cancel', action_path %></li>
+    <li><%= f.submit 'Save' %></li>
+  </ul>
 <% end %>

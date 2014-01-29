@@ -32,24 +32,26 @@
       color: $color-white;
       text-decoration: none;
     }
+
+
   }
 
   .logo {
-    @extend %font-trade-condensed;
-
-    font-size: 3em;
-    text-decoration: none;
-
     &:hover {
     }
-
-
   }
 
-  .logo-accent {
-     color: mix($color-gray, $color-red);
-   }
+}
 
+.logo {
+  @extend %font-trade-condensed;
+
+  font-size: 3em;
+  text-decoration: none;
+}
+
+.logo-accent {
+  color: mix($color-gray, $color-red);
 }
 
 .side-nav {

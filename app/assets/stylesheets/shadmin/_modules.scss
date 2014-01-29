@@ -42,3 +42,60 @@ hr {
   color: #ffffff;
   text-decoration: underline;
 }
+
+
+// Login
+// ==========================================================================
+.sign-in {
+  margin: 40px auto;
+  width: 80%;
+  display: table;
+}
+
+
+.sign-in-fields {
+  border-radius: 10px;
+  background-color: $color-slate;
+  color: $color-white;
+  display: table-cell;
+  float: left;
+  padding: 30px 40px;
+  width: 32em;
+
+  label {
+    color: $color-white;
+    width: 40%;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="url"] {
+    width: 60%;
+  }
+
+  a {
+    color: $color-white;
+  }
+
+  input[type="button"],
+  input[type="submit"],
+  input[type="cancel"] {
+    background: lighten($color-slate, 20%);
+    float: right;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+}
+
+.sign-in-logo {
+  display: table-cell;
+  font-size: 24px; // 1.5em;
+  padding-right: 50px;
+  text-align: right;
+  width: 33%;
+  vertical-align: middle;
+}
