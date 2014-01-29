@@ -141,7 +141,6 @@ DEPENDENCIES
   compass-rails
   factory_girl_rails
   jquery-rails
-  kaminari
   minitest
   minitest-colorize
   pg

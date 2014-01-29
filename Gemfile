@@ -13,4 +13,3 @@ gemspec
 gem 'jquery-rails'
 gem 'compass-rails'
 gem 'sass-rails'
-gem 'kaminari'
