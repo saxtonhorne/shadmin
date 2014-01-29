@@ -7,7 +7,7 @@
   </ul>
 
   <div class="index-nav">
-    <div class="index-nav-count">1-<%= @admin_users.count %> of <%= @admin_users.count %></div>
+    <div class="index-nav-count"><%= user_count_paginate @admin_users %></div>
     <%= paginate @admin_users %>
   </div>
 
