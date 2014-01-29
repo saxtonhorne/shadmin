@@ -18,14 +18,14 @@ module Shadmin
 			get :index
 			assert_response :success
 			assert_template layout: 'shadmin/application'
-			assert_select 'div', 'Admin: Posts Index Controller'
+			assert_template 'admin/posts/index'
 		end
 
 		def test_admin_posts_controller_show
 			sign_in @admin
 			get :show, id: 4
 			assert_response :success
-			assert_select 'div', 'Admin: Posts Show Controller'
+			assert_template 'admin/posts/show'
 		end
 
 		def test_admin_posts_controller_inherits_shadmin_authentication
