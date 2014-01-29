@@ -3,7 +3,7 @@ require 'test_helper'
 module Shadmin
   class AdminUsersControllerTest < ActionController::TestCase
     def setup
-	  	@admin = create(:admin)
+	  	@admin = create(:admin_adam)
 	  end
 
 	  # GET :index /admin/admin_users
