@@ -1,0 +1,16 @@
+<% 
+paths = request.path.split('/')
+resource ||= nil
+-%>
+
+<ol class="breadcrumb">
+  <li><%= link_to parent_title, paths[0, 3].join('/') %></li>
+
+  <% if resource && !resource.new_record? %>
+  	<li><%= link_to resource.to_param.titleize, paths[0, 3].push(resource.to_param).join('/') %></li>
+  <% end -%>
+
+  <% if paths.length > 3 && params[:action] != 'show' %>
+	  <li><%= params[:action].titleize %></li>
+  <% end -%>
+</ol>

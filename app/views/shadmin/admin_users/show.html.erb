@@ -1,23 +1,14 @@
-<!--todo: switch breadcrumb to dynamic-->
-<ol class="breadcrumb">
-    <li><%= link_to 'Admin Users', shadmin.admin_users_path %></li>
-    <li><%= @admin_user.email %></li>
-</ol>
+<%= render partial: 'breadcrumbs', locals: { parent_title: 'Admin Users', resource: @admin_user } %>
 
 <ul class="controls">
-    <li><%= link_to 'Edit', shadmin.edit_admin_user_path(@admin_user) %></li>
-    <li><%= link_to 'Delete', shadmin.admin_user_path(@admin_user), method: :delete, data: { confirm: 'Are you sure you
-        want to delete this admin user?' } %>
-    </li>
+  <li><%= link_to 'Edit', shadmin.edit_admin_user_path(@admin_user) %></li>
+  <li><%= link_to 'Delete', shadmin.admin_user_path(@admin_user), method: :delete, data: { confirm: 'Are you sure you want to delete this admin user?' } %>
+  </li>
 </ul>
 
 <dl>
-    <dt>Email</dt>
-    <dd><%= @admin_user.email %></dd>
-
-    <!--todo: remove this (and replace with dynamic population of field-value pairs)-->
-    <dt>Another Value</dt>
-    <dd>User value</dd>
+  <dt>Email</dt>
+  <dd><%= @admin_user.email %></dd>
 </dl>
 
 <br><br>

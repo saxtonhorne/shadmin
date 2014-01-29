@@ -1,8 +1,6 @@
 <div class="index">
-  <!--todo: switch breadcrumb to dynamic-->
-  <ol class="breadcrumb">
-    <li>Admin Users</li>
-  </ol>
+  
+  <%= render partial: 'breadcrumbs', locals: { parent_title: 'Admin Users' } %>
 
   <ul class="controls">
     <li><%= link_to 'Create New Admin User', shadmin.new_admin_user_path %></li>

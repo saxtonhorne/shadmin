@@ -1,7 +1,3 @@
-<!--todo: switch breadcrumb to dynamic-->
-<ol class="breadcrumb">
-    <li><%= link_to 'Admin Users', shadmin.admin_users_path %></li>
-    <li>Edit</li>
-</ol>
+<%= render partial: 'breadcrumbs', locals: { parent_title: 'Admin Users', resource: @admin_user } %>
 
 <%= render partial: 'form', locals: { action_path: shadmin.admin_user_path(@admin_user) } %>
