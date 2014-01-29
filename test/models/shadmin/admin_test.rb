@@ -4,7 +4,7 @@ module Shadmin
   class AdminTest < ActiveSupport::TestCase
 
 		def setup
-			@admin ||= build(:admin)
+			@admin ||= build(:admin_adam)
 		end
 
 	  def test_validates_email
@@ -30,6 +30,13 @@ module Shadmin
 	  	new_admin = create(:admin, email: 'bob@example.com')
 	  	@admin.email = new_admin.email
 	  	assert_not @admin.valid?
+	  end
+
+	  # Test kaminari :page method
+	  def test_page
+	  	create_list(:admin, 75)
+	  	admins = Shadmin::Admin.page(1)
+	  	assert_equal 20, admins.count
 	  end
 	end
 end
