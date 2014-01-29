@@ -11,7 +11,7 @@ module Shadmin
 			sign_out @admin
 			get :new, use_route: :shadmin
 			assert_response :success
-			assert_template layout: 'shadmin/application'
+			assert_template layout: 'shadmin/sessions'
 		end
 
 		def test_login_redirect_to_location
