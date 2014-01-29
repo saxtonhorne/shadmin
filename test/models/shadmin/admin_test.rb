@@ -34,8 +34,8 @@ module Shadmin
 
 	  # Test kaminari :page method
 	  def test_page
-	  	create_list(:admin, 75)
-	  	admins = Shadmin::Admin.page(1)
+	  	create_list(:admin, 30)
+	  	admins = Shadmin::Admin.page(1).per(20)
 	  	assert_equal 20, admins.count
 	  end
 	end
