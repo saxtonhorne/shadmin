@@ -23,13 +23,15 @@
   <header class="header" role="banner">
     <a href="#main" class="visually-hidden">Skip to content</a>
     <nav class="nav" role="navigation">
-      <!--todo: Insert client's branding here-->
       <!--todo: switch with dynamic path back to dashboard-->
       <%= link_to '/admin', {:class=>"logo"} do %>
-        Capital<span class="logo-accent">CRE</span>
+        <!--<span>sh</span><span class="accent">admin</span>-->
+        <%= image_tag "shadmin/logo-header.png" %>
       <% end %>
       <a class="logo"></a>
-      <%= link_to('logout', shadmin.destroy_admin_session_path, { method: :delete, :class=>"right" } ) if admin_signed_in? %>
+      <div class="nav-links">
+        <%= link_to('logout', shadmin.destroy_admin_session_path, { method: :delete } ) if admin_signed_in? %>
+      </div>
     </nav>
   </header>
 

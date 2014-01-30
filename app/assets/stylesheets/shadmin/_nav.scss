@@ -1,4 +1,6 @@
 
+$nav-padding: 1.5rem;
+
 .nav {
   // todo: not working: cannot find %clear-after
   // @extend %clear-after;
@@ -14,15 +16,14 @@
     clear: both;
   }
 
-  background: darken($color-red, 20%);
-  color: $color-white;
-  line-height: 5rem;
-  padding: 0.5rem 1.5rem 0.25rem 1.5rem;
-  width: 100%;
 
-  .right {
-    float: right;
-  }
+
+  background: mix($color-white, $color-slate);
+  color: $color-white;
+  position: relative;
+  padding-left: $nav-padding;
+  padding-right: $nav-padding;
+  width: 100%;
 
   a {
     color: $color-white;
@@ -33,34 +34,52 @@
       text-decoration: none;
     }
 
-
   }
 
   .logo {
-    &:hover {
+    float: left;
+
+    img {
+      display: table-cell;
+      margin: 10px 20px;
+      vertical-align: middle;
     }
   }
+}
 
+.nav-links {
+  bottom: 10px;
+  position: absolute;
+  right: $nav-padding;
+  vertical-align: bottom;
 }
 
 .logo {
   @extend %font-trade-condensed;
-
-  font-size: 3em;
+  display: table;
   text-decoration: none;
-}
 
-.logo-accent {
-  color: mix($color-gray, $color-red);
+  span {
+    font-size: 3em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    line-height: 5rem;
+    &.accent {
+      color: mix($color-gray, $color-red);
+    }
+  }
+
+  &:hover {
+  }
 }
 
 .side-nav {
   background: $color-gray-light;
-  float: left;
+  display: table-cell;
   height: 100%;
   margin: 0;
   padding: 0;
-  width: 20%;
+  vertical-align: top;
 
   li {
 
@@ -68,6 +87,10 @@
     font-size: 1.4rem;
     height: auto;
     text-align: right;
+
+    &:first-child {
+      border-top: 1px solid mix($color-gray, $color-gray-light);
+    }
 
     a {
 

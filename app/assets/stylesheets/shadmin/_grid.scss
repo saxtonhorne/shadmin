@@ -20,11 +20,13 @@ body {
 $max-width: 75em;
 
 .main-container {
+  display: table;
   height: 100%;
+  width: 100%;
 }
 
 .main {
-  float: left;
+  display: table-cell;
   padding: 3%; // todo: get a real solution for side nav going down 100%
   width: 80%; // other 20% taken up by sub nav
 }
