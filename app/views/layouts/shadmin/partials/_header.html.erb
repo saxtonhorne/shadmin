@@ -1,0 +1,14 @@
+<header class="header" role="banner">
+  <a href="#main" class="visually-hidden">Skip to content</a>
+  <nav class="nav" role="navigation">
+    <!--todo: switch with dynamic path back to dashboard-->
+    <%= link_to '/admin', {:class=>"logo"} do %>
+      <!--<span>sh</span><span class="accent">admin</span>-->
+      <%= image_tag "shadmin/logo-header.png" %>
+    <% end %>
+    <a class="logo"></a>
+    <div class="nav-links">
+      <%= link_to('logout', shadmin.destroy_admin_session_path, { method: :delete } ) if admin_signed_in? %>
+    </div>
+  </nav>
+</header>

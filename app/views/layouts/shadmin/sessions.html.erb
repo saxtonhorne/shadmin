@@ -11,50 +11,32 @@
     <%= stylesheet_link_tag "shadmin/application", media: "all" %>
     <%= javascript_include_tag "shadmin/application" %>
     <%= csrf_meta_tags %>
-
   </head>
 
   <body>
-  <!--[if lt IE 8]>
-  <p class="ancient">You are using an outdated browser.
-    <a href="http://browsehappy.com/" target="_blank">Upgrade your browser today</a> to better experience this site.</p>
-  <![endif]-->
+    <!--[if lt IE 8]>
+    <p class="ancient">You are using an outdated browser.
+      <a href="http://browsehappy.com/" target="_blank">Upgrade your browser today</a> to better experience this site.</p>
+    <![endif]-->
 
-  <header class="header" role="banner">
-    <a href="#main" class="visually-hidden">Skip to content</a>
-    <nav class="nav" role="navigation">
-      <!--todo: switch with dynamic path back to dashboard-->
-      <%= link_to '/admin', {:class=>"logo"} do %>
-        <!--<span>sh</span><span class="accent">admin</span>-->
-        <%= image_tag "shadmin/logo-header.png" %>
-      <% end %>
-      <a class="logo"></a>
-      <div class="nav-links">
-        <%= link_to('logout', shadmin.destroy_admin_session_path, { method: :delete } ) if admin_signed_in? %>
+    <%= render 'layouts/shadmin/partials/header' %>
+
+    <div class="main-container">
+
+      <%= render 'layouts/shadmin/partials/nav' %>
+      
+      <div id="main" class="main" role="main">
+        
+        <%= render 'layouts/shadmin/partials/flash_messages' %>
+
+        <%= yield %>
+
       </div>
-    </nav>
-  </header>
 
-  <div class="main-container">
-    <div class="side-nav">
-      <ul>
-        <li><a>Properties</a></li>
-        <li><a>Brokers</a></li>
-        <!--todo: 'active' class should (only) be enabled if this is the current page-->
-        <li><%= link_to 'Admin Users', shadmin.admin_users_path, {:class=>"active"} %></li>
-      </ul>
     </div>
-    <div id="main" class="main" role="main">
-      <% flash.each do |key, msg| %>
-      <%= content_tag :div, msg, id: key %>
-      <% end %>
 
-      <%= yield %>
-    </div>
-  </div>
+    <footer class="footer" role="contentinfo">
+    </footer>
 
-  <footer class="footer" role="contentinfo">
-  </footer>
   </body>
-
 </html>
