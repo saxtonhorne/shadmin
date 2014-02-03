@@ -7,7 +7,7 @@
   </ul>
 
   <div class="index-nav">
-    <div class="index-nav-count"><%= user_count_paginate @admin_users %></div>
+    <div class="index-nav-count"><%= records_count_paginated @admin_users, params[:page] %></div>
     <%= paginate @admin_users %>
   </div>
 
