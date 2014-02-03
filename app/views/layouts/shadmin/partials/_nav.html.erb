@@ -1,8 +1,5 @@
 <div class="side-nav">
   <ul>
-    <li><a>Properties</a></li>
-    <li><a>Brokers</a></li>
-    <!--todo: 'active' class should (only) be enabled if this is the current page-->
-    <li><%= link_to 'Admin Users', shadmin.admin_users_path, {:class=>"active"} %></li>
+    <li><%= link_to 'Admin Users', shadmin.admin_users_path, class: 'active' %></li>
   </ul>
 </div>
