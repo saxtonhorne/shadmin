@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shadmin (0.0.2)
+    shadmin (0.0.3)
       compass-rails
       devise (~> 3.2.2)
       jquery-rails (~> 3.0.4)
