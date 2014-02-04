@@ -11,5 +11,4 @@ gemspec
 # your gem to rubygems.org.
 
 gem 'jquery-rails'
-gem 'compass-rails'
 gem 'sass-rails'
