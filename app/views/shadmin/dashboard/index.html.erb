@@ -1,1 +1,33 @@
-<h1>Welcome to the Dashboard</h1>
+<div>
+  <h1>Welcome to the Dashboard</h1>
+  <ul class="dashboard-controls">
+    <li><%= link_to 'Add Admin User', shadmin.new_admin_user_path, class:'button' %></li>
+    <li><a class="button">New Property</a></li>
+    <li><a class="button">New Something Else</a></li>
+    <li><a class="button">New Something Else</a></li>
+    <li><a class="button">New Something Else</a></li>
+  </ul>
+  <div class="dashboard-card left-block">
+    <div class="dashboard-card-header">Your Recent Changes</div>
+    <ul class="dashboard-list">
+      <li>
+        <a>First Change</a><span class="date">Jan 1</span>
+      </li>
+      <li>
+        <a>Second Change</a><span class="date">Dec 1</span>
+      </li>
+      <li>
+        <a>Third Change</a><span class="date">Feb 1</span>
+      </li>
+    </ul>
+
+  </div>
+  <div class="dashboard-card right-block">
+    <div class="dashboard-card-header attention">Notifications</div>
+    <ul class="dashboard-list">
+      <li>First Change</li>
+      <li>Second Change</li>
+      <li>Third Change</li>
+    </ul>
+  </div>
+</div>

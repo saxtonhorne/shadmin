@@ -1,0 +1,68 @@
+
+.dashboard-card {
+  background: $color-gray-light;
+}
+
+.dashboard-card-header {
+  background: $color-red;
+  color: $color-white;
+}
+
+.dashboard-controls {
+  margin: 30px 20px;
+
+  li {
+    display: inline-flex;
+    width: 30%;
+
+    a.button {
+      width: 100%;
+    }
+  }
+}
+
+.dashboard-card {
+  height: 100%;
+  width: 70%;
+
+  .dashboard-card-header {
+    color: $color-white;
+    background: $color-gray;
+    line-height: 2.5em;
+    padding: 0 0.75em;
+
+    &.attention {
+      color: $color-white;
+      background: $color-red;
+    }
+  }
+
+  .dashboard-list {
+    margin: 0 1.25em;
+    padding: 0.5em;
+
+    li {
+      list-style-type: square;
+    }
+  }
+}
+
+.date {
+  color: $color-gray;
+  float:right;
+
+}
+
+$gutter: 30px;
+
+.left-block {
+  float: left;
+  margin-right: $gutter;
+  width: 61%;
+}
+
+.right-block {
+  float: left;
+  width: 33%;
+}
+
