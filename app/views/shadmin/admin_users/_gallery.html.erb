@@ -1,0 +1,28 @@
+<div class="lightbox">
+  <div class="gallery">
+    <ul class="grid sortable ui-sortable">
+
+      <!--todo: repeat-->
+      <li>
+        <div class="thumbnail set-as-cover"><img src="http://farm4.staticflickr.com/3704/11340240054_84ca757a1b_z_d.jpg"/></div>
+        <div class="controls"><a class="left">set as cover</a><a class="right">delete</a></div>
+      </li>
+      <!--endrepeat-->
+
+      <li class="uploading">
+        <div class="progress"><span id="file1" style="width: 40%" class="bar"></span></div>
+        <div class="thumbnail-like"><span class="text-container">
+                <p>file.jpg</p></span></div>
+        <div class="controls"><a class="left">set as cover</a><a class="right">delete</a></div>
+      </li>
+      <li id="uploader">
+        <div class="thumbnail-like">
+          <label for="fileupload" class="text-container">
+            <p>Click to browse for photos, or drag photos here.</p>
+          </label>
+          <input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple="multiple">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
