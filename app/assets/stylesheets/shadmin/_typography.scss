@@ -95,20 +95,29 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLogibility;
 }
 
-// todo: replace these headers with some golden mean calculation
 h1 {
-  font-size: 2em;
-  line-height: 3em;
+  font-size: 2.6em;
+  line-height: 3.9em;
 }
 
 h2 {
-  font-size: 1.2em;
-  line-height: 1.8em;
+  font-size: 2.1em;
+  line-height: 3.1em;
 }
 
 h3 {
-  font-size: 0.72em;
-  line-height: 1.08em;
+  font-size: 1.6em;
+  line-height: 2.4em;
+}
+
+h4 {
+  font-size: 1.3em;
+  line-height: 2em;
+}
+
+h5, h6 {
+  font-size: 1em;
+  line-height: 1.5em;
 }
 
 // Misc

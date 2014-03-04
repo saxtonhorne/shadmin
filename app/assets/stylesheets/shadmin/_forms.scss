@@ -69,3 +69,18 @@ input[type="cancel"] {
 
 
 }
+
+// Form Fields
+// ==========================================================================
+
+.field-group {
+  margin: 5px;
+  padding: 5px;
+  padding-bottom: 10px;
+}
+
+.field-group-header {
+  @extend h3;
+  border-bottom: 1px solid $color-gray;
+
+}
